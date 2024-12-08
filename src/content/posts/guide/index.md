@@ -1,9 +1,9 @@
 ---
-title: Simple Guides for Fuwari
+title: Guide For Posting Blogs
 published: 2024-12-7
-description: This is the first post of my new Astro blog.
+description: Guides for a new blog.
 image: "./cover.jpeg"
-tags: ["Fluorine", "Blogging"]
+tags: ["Guide", "Blogging"]
 category: Blog
 draft: false
 ---
