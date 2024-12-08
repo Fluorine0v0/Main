@@ -1,14 +1,14 @@
-```markdown
 ---
-title: Markdown 扩展功能
+title: Markdownn
 published: 2024-05-01
 updated: 2024-11-29
 description: '阅读更多关于 Fuwari 中的 Markdown 功能'
 image: ''
-tags: [示例, 演示, Markdown, Fuwari]
+tags: [Markdown, Fuwari]
 category: '示例'
 draft: false 
 ---
+
 ## GitHub 仓库卡片
 您可以添加动态卡片，链接到 GitHub 仓库。在页面加载时，仓库信息会从 GitHub API 中获取。 
 ::github{repo="Fabrizz/MMM-OnSpotify"}
