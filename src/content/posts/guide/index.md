@@ -1,6 +1,6 @@
 ---
 title: Guide For Posting Blogs
-published: 2024-12-7
+published: 2024-12-07
 description: Guides for a new blog.
 image: "./cover.jpeg"
 tags: ["Guide", "Blogging"]

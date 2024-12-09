@@ -1,11 +1,10 @@
 ---
-title: Markdownn
+title: Markdown拓展用法
 published: 2024-05-01
 updated: 2024-11-29
 description: '阅读更多关于 Fuwari 中的 Markdown 功能'
-image: ''
-tags: [Markdown, Fuwari]
-category: 'Guide'
+tags: [Demo, Example, Markdown, Fuwari]
+category: 'Examples'
 draft: false 
 ---
 
