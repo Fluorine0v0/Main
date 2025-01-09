@@ -1,7 +1,7 @@
 # About
-This is the demo site for [Fuwari](https://github.com/saicaca/fuwari).
+This is the main site for [Fluorine](https://github.com/Fluorine0v0/Mian).
 
-::github{repo="saicaca/fuwari"}
+::github{repo="Fluorine0v0/Main"}
 
 > ### Sources of images used in this site
 > - [Unsplash](https://unsplash.com/)

@@ -1,22 +1,20 @@
 ---
 title: IP黑洞
 published: 2025-01-02
-description: ''
+description: 'IP黑洞介绍，GFW的延申'
 image: ''
-tags: []
+tags: [机房适用,网站,网络]
 category: ''
-draft: true 
-lang: ''
+draft: false 
+
 ---
 # 墙，墙和更高的墙
-
-发表于 2018-09-10 更新于 2024-07-08 阅读时长 4 分钟
 
 > Dread it, run from it, **wall** arrives all the same
 
 我相信本文的读者早就已经清楚地知晓 GFW 的性质和作用，本文将对其机制和原理进行简要的分析。GFW 用于干扰的机制有三种，我将按照它们的严重性从低到高开始分析，本文用到的主要工具为 Wireshark。
 
-### 1. DNS 污染
+# 1. DNS 污染
 
 这是最容易绕过，也常常是最先被应用的干扰。在 17 年年末开始的新一轮封禁中，Reddit 和 Pixiv 就是先被施加了这样的干扰。
 
@@ -46,7 +44,7 @@ GFW 通过运营商部署（通常在省级出口上）了 DNS 污染系统，�
 2.  使用境外的非标准端口 DNS
 3.  使用特殊的 DNS 查询机制，可以识别并丢弃 GFW 制造的假数据
 
-### 2. TCP RST
+# 2. TCP RST
 
 TCP 标准中规定了 Control Bits 中的第四位为 RST，如果置 1 则立即中止当前的连接。GFW 就是恶意使用该机制来对 TCP 连接进行干扰。
 
@@ -69,7 +67,7 @@ RST 攻击是 GFW 最常见也是运用最广泛的屏蔽手段之一，因此�
 3.  在使用了 HTTPS 的网站上，使用 ESNI 来避免 SNI 触发 GFW。也可以仅代理 HTTPS 握手，之后的数据直连
 4.  对于使用了 HTTPS 以及 CDN 的网站，可以通过指定 HOST 的方式隐藏 SNI
 
-### 3. IP 黑洞
+# 3. IP 黑洞
 
 这是最严重的封锁方法。在 GFW 尚未完善的时候，这是唯一的屏蔽手段，因此很多早期就被屏蔽的网站诸如 Facebook 等等均被使用该手段屏蔽。被 GFW 察觉到的 VPS，因为除了 IP 没有其他特征，也会被使用该手段封禁。
 

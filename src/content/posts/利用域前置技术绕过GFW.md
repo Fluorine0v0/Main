@@ -41,6 +41,6 @@ HTTPS（更准确来讲是 TLS）有一个扩展，使得在 Client Hello 阶段
 ::github{repo="SeaHOH/GotoX"}
 ::github{repo="SpaceTimee/Sheas-Cealer"}
 
-## 注意事项
-----
+:::Warning[注意事项]
 有的网站比如 Twitter、Google 这类大型网站大多为 IP 黑洞，上述方式是没有用的。通常被 SNI 阻断的网站，也有 DNS 污染。请配合下面的其中一个：DNSCrypt、DNS over HTTPS (DoH)、DNS Over TLS (DoT) 使用。个人比较喜欢 `DNSCrypt-proxy` 和 `AdGuardHome`。其中 `Adguardhome` 对小白来说比较友好。
+:::
