@@ -41,38 +41,6 @@ HTTPS（更准确来讲是 TLS）有一个扩展，使得在 Client Hello 阶段
 ::github{repo="SeaHOH/GotoX"}
 ::github{repo="SpaceTimee/Sheas-Cealer"}
 
-## 教程（以Bypass-GFW-SNI + DNSCrypt-proxy 为例）
-
----------------------------------------
-
-> 如果觉得教程困难的话，可以去评论区下载已打包好的配置文件与程序
-
-**Step1.** 去项目的 Release 页面下载已编译好的文件
-
-[Bypass-GFW-SNI](https://github.com/bypass-GFW-SNI/main/releases) 还有 [DNSCrypt-Proxy](https://github.com/DNSCrypt/dnscrypt-proxy/releases)
-
-注：可能最新版本与本文有一点差异，但大致上方法都是相同的。
-
-**Step2.** 配置 DNSCrypt
-
-*   设置 `fallback_resolver`，即回落 DNS 为你运营商的 DNS，比如 `114.114.114.114:53`（：后面的是端口号，一般情况下 DNS 都是用 UDP 53 端口的）
-*   设置 `netprobe_address`，即网络检测地址为国内能访问的地址，比如 `114.114.114.114:53`
-*   把 `[sources]` 里的全部删掉或在前面加 `#` 号，因为 `raw.githubusercontent.com` 这个域名已经被 SNI 阻断了，这段留着，打开 DNSCrypt 可能会很慢。
-*   在 `[static]` 里填上
-    ```
-    [static.'Cloudflare-DNS-DoH']
-    stamp = 'sdns://AgcAAAAAAAAABzEuMC4wLjESZG5zLmNsb3VkZmxhcmUuY29tCi9kbnMtcXVlcnk'
-    [static.'Adguard-DNS-DoH']
-    stamp = 'sdns://AgMAAAAAAAAADzE3Ni4xMDMuMTMwLjEzMCD5_zfwLmMstzhwJcB-V5CKPTcbfJXYzdA5DeIx7ZQ6Eg9kbnMuYWRndWFyZC5jb20KL2Rucy1xdWVyeQ'
-    ```
-*   将 `listen_addresses` 改为 `127.0.0.1:5353`（因为 53 端口要给 Bypass-GFW-SNI 用）
-*   `server_names` 调整为 `['Adguard-DNS-DoH', 'Cloudflare-DNS-DoH']`
-*   保存 `dnscrypt-proxy.toml`，双击 `dnscrypt-proxy.exe` 运行。如果黑色的窗口一直在，就说明没有问题。
-
-**Step3.** 配置 Bypass-GFW-SNI
-
-这个配置十分简单，具体的可以去看看程序自带的帮助，如果是懒人包的话双击 `MITMCA.crt` 先导入证书 (不会的 Google 如何导入根证书或看[这里](https://zhuanlan.zhihu.com/p/37264839)把 `CA.crt` 换成 `MITMCA.crt` 就是了)，同目录下的 `MITMCA.key` 是 CA 的私钥（不信任我的，自己去 Google 一下 OpenSSL 创建 CA），运行 `StartProgram.bat`，把电脑的 DNS 改成首选 `127.0.0.1`，备选为空（不会的也请 Google 如何修改 DNS 或看[这里](https://baijiahao.baidu.com/s?id=1612906041166793439)）。用浏览器打开 `https://www.pixiv.net`，Done。
-
 ## 注意事项
 ----
 有的网站比如 Twitter、Google 这类大型网站大多为 IP 黑洞，上述方式是没有用的。通常被 SNI 阻断的网站，也有 DNS 污染。请配合下面的其中一个：DNSCrypt、DNS over HTTPS (DoH)、DNS Over TLS (DoT) 使用。个人比较喜欢 `DNSCrypt-proxy` 和 `AdGuardHome`。其中 `Adguardhome` 对小白来说比较友好。
